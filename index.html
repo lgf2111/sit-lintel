@@ -9,6 +9,10 @@
 <meta property="og:description" content="A free, unofficial room booking tool made by an SIT student." />
 <meta property="og:image" content="https://lintel.leeguanfeng.com/images/share.jpg" />
 <meta property="og:url" content="https://lintel.leeguanfeng.com/" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Lintel: every SIT room and half-hour slot on one board." />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#17161a" media="(prefers-color-scheme: dark)" />
 <link rel="icon" type="image/svg+xml" href="/icon.svg" />
@@ -153,6 +157,9 @@
   .feature:last-child { border-bottom: 0; padding-bottom: 0; }
   .feature p { color: var(--muted); margin: 0; }
   .feature .shot { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+  .feature .shot.scroller { overflow-x: auto; }
+  .feature .shot .wide-shot { width: 560px; max-width: none; }
+  @media (min-width: 760px) { .feature .shot .wide-shot { width: 100%; } }
   .feature .shot img { width: 100%; }
 
   .checks { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
@@ -357,17 +364,18 @@
     <div class="wrap">
       <span class="eyebrow">What you can do</span>
       <h2>More than one slot at a time</h2>
+      <p class="sub">The screenshots below scroll sideways — swipe one to read it.</p>
       <div class="feature">
         <div><h3>Book several slots at once</h3><p>Select a few slots, even across rooms, then review them before you confirm.</p></div>
-        <div class="shot"><img src="/images/booking.jpg" alt="Confirm booking dialog showing the room, date and selected slots." width="1280" height="800" loading="lazy" /></div>
+        <div class="shot scroller"><img src="/images/booking.jpg" alt="Confirm booking dialog showing the room, date and selected slots." width="1280" height="800" loading="lazy" class="wide-shot" /></div>
       </div>
       <div class="feature">
         <div><h3>Book lab equipment</h3><p>Browse equipment by type and lab, and see each item’s own hours.</p></div>
-        <div class="shot"><img src="/images/equipment.jpg" alt="Equipment board listing items in rows with their available slots." width="1280" height="800" loading="lazy" /></div>
+        <div class="shot scroller"><img src="/images/equipment.jpg" alt="Equipment board listing items in rows with their available slots." width="1280" height="800" loading="lazy" class="wide-shot" /></div>
       </div>
       <div class="feature">
         <div><h3>Laptop or phone, light or dark</h3><p>Use it in Chrome, on iPhone or on Android. Bookings, cancellations and your credit balance sit in one dashboard.</p></div>
-        <div class="shot"><img src="/images/dark.jpg" alt="Lintel board in dark theme." width="1280" height="800" loading="lazy" /></div>
+        <div class="shot scroller"><img src="/images/dark.jpg" alt="Lintel board in dark theme." width="1280" height="800" loading="lazy" class="wide-shot" /></div>
       </div>
     </div>
   </section>
