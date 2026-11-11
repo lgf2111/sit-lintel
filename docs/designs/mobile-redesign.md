@@ -112,13 +112,16 @@ the ones that survived a check against the built page. Two were dropped.
   `/privacy` keep their own headers. Extracting `site.css` is the next step if the two
   pages are to match exactly — they already share the red and the near-black ground but
   not the greys (`#1c1b1a`/`#dcd9d1` there versus `#1c1b1d`/`#e2ded5` here).
-* **`og:image` still points at `share.jpg`,** which shows the old desktop hero. Sharing
-  the link advertises a layout the page no longer has. It needs one 1200×630 capture of
-  the new hero.
-* **The other four screenshots are still 1280 px captures** at ~350 px
-  (`booking.jpg`, `equipment.jpg`, `dark.jpg` in the features, plus the two in the
-  comparison). They are framed inside bordered cards and read as illustrations rather
-  than evidence; the legibility goal is met only in the hero.
+* **`og:image` was stale and is now fixed.** `share.jpg` is a fresh 1200×630 capture of
+  the new hero, with `og:image:width/height/alt` and `summary_large_image` so chat apps
+  show the large card. It needs recapturing whenever the hero changes.
+* **The four remaining screenshots are 1280 px captures** at 560 px inside a swipe
+  container (`booking.jpg`, `equipment.jpg`, `dark.jpg`, plus the two in the
+  comparison). Their interface text is legible once swiped, but they are captures of a
+  UI that will drift; a phone-width capture set is the honest long-term fix.
+* **The palette now matches across pages** (`#fbfaf7`, `#1c1b1d`, `#e2ded5`, `#f1efe8`,
+  `#232228`, link `#b5141a`/`#f59a9e` in `install.html` and `privacy.html`), but the CSS
+  is still duplicated per file — there is no `site.css` to inherit.
 * **No success metric exists.** This is a taste-driven change with measured CSS
   outcomes but no behavioural baseline: no device split, no install rate, no drop-off
   point. If the goal is installs rather than appearance, the next measurement belongs
