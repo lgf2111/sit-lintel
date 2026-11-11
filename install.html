@@ -10,18 +10,42 @@
 <style>
   body { max-width: 560px; margin: 0 auto; padding: 24px 16px 40px; font: 16px/1.6 system-ui, sans-serif; color: #1c1b1a; background: #fff; }
   h1 { font-size: 28px; margin-bottom: 4px; }
-  h2 { font-size: 19px; margin-top: 28px; }
   li { margin-bottom: 8px; }
   .btn { display: block; margin: 16px 0; padding: 14px 16px; text-align: center; font-weight: 600; color: #fff; background: #da1a21; border-radius: 8px; text-decoration: none; }
-  section { scroll-margin-top: 16px; }
-  h3 { font-size: 17px; margin: 24px 0 4px; }
   img.step { display: block; width: 100%; height: auto; margin: 12px 0; border: 1px solid #dcd9d1; border-radius: 10px; }
   img.step.phone { max-width: 320px; margin-left: auto; margin-right: auto; }
   .btn.alt { color: #1c1b1a; background: transparent; border: 1px solid #dcd9d1; }
-  section + section { margin-top: 44px; padding-top: 8px; border-top: 1px solid #dcd9d1; }
-  section:target h2 { color: #da1a21; }
   .note { padding: 12px; font-size: 14px; background: #f1f0ec; border-radius: 8px; }
-  @media (prefers-color-scheme: dark) { body { color: #f4f3f1; background: #1c1b1d; } .note { background: #2c2a2d; } .btn.alt { color: #f4f3f1; border-color: #4a484b; } img.step { border-color: #3b393c; } section + section { border-top-color: #3b393c; } a:not(.btn) { color: #f59a9e; } }
+
+  /* Accordion: a platform is one closed row until opened; each step inside is
+     another closed row. Everything is <details>, so it works with no script. */
+  details.plat { margin: 14px 0; padding: 0 14px; border: 1px solid #dcd9d1; border-radius: 12px; scroll-margin-top: 16px; }
+  details.plat > summary { display: flex; align-items: baseline; gap: 8px; padding: 14px 0; font-size: 17px; font-weight: 600; cursor: pointer; list-style: none; }
+  details.plat > summary::-webkit-details-marker { display: none; }
+  details.plat > summary::after { content: '⌄'; margin-left: auto; font-size: 18px; color: #8a8783; transition: transform .15s ease; }
+  details.plat[open] > summary::after { transform: rotate(180deg); }
+  .sub { font-size: 13px; font-weight: 400; color: #77746f; }
+  details.plat > .intro { margin: 0 0 8px; font-size: 14px; color: #54524f; }
+
+  details.step { border-top: 1px solid #eceae5; }
+  details.step > summary { display: flex; gap: 8px; padding: 12px 0; font-size: 15px; font-weight: 600; cursor: pointer; list-style: none; }
+  details.step > summary::-webkit-details-marker { display: none; }
+  details.step > summary::after { content: '›'; margin-left: auto; color: #b3b0aa; transition: transform .15s ease; }
+  details.step[open] > summary::after { transform: rotate(90deg); }
+  details.step .body { padding: 0 0 14px; font-size: 15px; }
+  details.step .body > :first-child { margin-top: 0; }
+  details.plat[open] > details.step:first-of-type { border-top: none; }
+
+  @media (prefers-color-scheme: dark) {
+    body { color: #f4f3f1; background: #1c1b1d; }
+    .note { background: #2c2a2d; }
+    .btn.alt { color: #f4f3f1; border-color: #4a484b; }
+    img.step { border-color: #3b393c; }
+    a:not(.btn) { color: #f59a9e; }
+    details.plat { border-color: #3b393c; }
+    details.step { border-top-color: #333134; }
+    details.plat > .intro, .sub { color: #a8a5a0; }
+  }
 </style>
 </head>
 <body>
@@ -30,85 +54,151 @@
 <p>A faster board for SIT's room booking system, on your laptop or phone.</p>
 <p class="note">Lintel is an unofficial student project. It is not affiliated with or endorsed by SIT. You need your own SIT account. See the <a href="/privacy">privacy policy</a>.</p>
 
-<section id="chrome">
-<h2>Chrome</h2>
-<p>For laptops and desktops. It takes about a minute.</p>
+<details class="plat" id="chrome">
+  <summary>Chrome <span class="sub">laptop or desktop · 4 steps · about a minute</span></summary>
+  <p class="intro">For laptops and desktops. It takes about a minute.</p>
 
-<h3>1. Add it from the Chrome Web Store</h3>
-<p>Open the store page and click <b>Add to Chrome</b>.</p>
-<a class="btn" href="https://chromewebstore.google.com/detail/gighmpamoclmaahceadehebkobcgmlbc">Open the Chrome Web Store</a>
-<img class="step" src="/images/install/chrome-1.jpg" alt="Lintel on the Chrome Web Store, with the Add to Chrome button marked." loading="lazy" />
+  <details class="step">
+    <summary>1. Add it from the Chrome Web Store</summary>
+    <div class="body">
+      <p>Open the store page and click <b>Add to Chrome</b>.</p>
+      <a class="btn" href="https://chromewebstore.google.com/detail/gighmpamoclmaahceadehebkobcgmlbc">Open the Chrome Web Store</a>
+      <img class="step" src="/images/install/chrome-1.jpg" alt="Lintel on the Chrome Web Store, with the Add to Chrome button marked." loading="lazy" />
+    </div>
+  </details>
 
-<h3>2. Confirm</h3>
-<p>Click <b>Add extension</b>.</p>
-<img class="step" src="/images/install/chrome-2.jpg" alt="Chrome's Add Lintel pop-up, with the Add extension button marked." loading="lazy" />
-<p class="note">Chrome says Lintel can “read and change your data” on <code>rbs.singaporetech.edu.sg</code>. That’s how it changes the page layout. It’s limited to that one site. See <a href="/#safety">what Lintel does and doesn’t do</a>.</p>
+  <details class="step">
+    <summary>2. Confirm</summary>
+    <div class="body">
+      <p>Click <b>Add extension</b>.</p>
+      <img class="step" src="/images/install/chrome-2.jpg" alt="Chrome's Add Lintel pop-up, with the Add extension button marked." loading="lazy" />
+      <p class="note">Chrome says Lintel can “read and change your data” on <code>rbs.singaporetech.edu.sg</code>. That’s how it changes the page layout. It’s limited to that one site. See <a href="/#safety">what Lintel does and doesn’t do</a>.</p>
+    </div>
+  </details>
 
-<h3>3. Pin it (optional)</h3>
-<p>Click the puzzle piece at the top right of Chrome, then click the pin next to Lintel so it’s easy to find.</p>
-<img class="step" src="/images/install/chrome-3.jpg" alt="The Chrome extensions button and the pin icon next to Lintel, both marked." loading="lazy" />
+  <details class="step">
+    <summary>3. Pin it (optional)</summary>
+    <div class="body">
+      <p>Click the puzzle piece at the top right of Chrome, then the pin next to Lintel so it’s easy to find.</p>
+      <img class="step" src="/images/install/chrome-3.jpg" alt="The Chrome extensions button and the pin icon next to Lintel, both marked." loading="lazy" />
+    </div>
+  </details>
 
-<h3>4. Open the booking site</h3>
-<p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> and log in as usual. Lintel appears by itself.</p>
-<img class="step" src="/images/after.jpg" alt="The Lintel board in Chrome, showing rooms and time slots." loading="lazy" />
-</section>
+  <details class="step">
+    <summary>4. Open the booking site</summary>
+    <div class="body">
+      <p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> and log in as usual. Lintel appears by itself.</p>
+      <img class="step" src="/images/after.jpg" alt="The Lintel board in Chrome, showing rooms and time slots." loading="lazy" />
+    </div>
+  </details>
+</details>
 
-<section id="iphone">
-<h2>iPhone</h2>
-<p>Lintel runs in Safari, with the help of a free app called Userscripts. Every step below happens on your iPhone.</p>
+<details class="plat" id="iphone">
+  <summary>iPhone <span class="sub">Safari + Userscripts · 7 steps</span></summary>
+  <p class="intro">Lintel runs in Safari, with the help of a free app called Userscripts. Every step below happens on your iPhone.</p>
 
-<h3>1. Get the Userscripts app</h3>
-<p>Install it from the App Store. It’ll say <b>Get</b> if you don’t have it yet.</p>
-<a class="btn alt" href="https://apps.apple.com/app/userscripts/id1463298887">Open the App Store</a>
-<img class="step" src="/images/install/iphone-1.jpg" alt="Userscripts in the App Store, with the main button marked." loading="lazy" />
+  <details class="step">
+    <summary>1. Get the Userscripts app</summary>
+    <div class="body">
+      <p>Install it from the App Store. It’ll say <b>Get</b> if you don’t have it yet.</p>
+      <a class="btn alt" href="https://apps.apple.com/app/userscripts/id1463298887">Open the App Store</a>
+      <img class="step" src="/images/install/iphone-1.jpg" alt="Userscripts in the App Store, with the main button marked." loading="lazy" />
+    </div>
+  </details>
 
-<h3>2. Note where Userscripts keeps scripts</h3>
-<p>Open the app once and look at <b>Current Directory</b> at the bottom. That is the folder Lintel has to sit in — you’ll come back to it in step 5.</p>
-<p>Unless you changed it, it reads <b>Userscripts App Documents</b>, which is <b>Files → On My iPhone → Userscripts</b>. If you pointed the app at iCloud instead, it will read something like <code>iCloud Drive/Userscripts</code> — use whichever one the app shows you.</p>
-<img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its Current Directory." loading="lazy" />
+  <details class="step">
+    <summary>2. Note where Userscripts keeps scripts</summary>
+    <div class="body">
+      <p>Open the app once and look at <b>Current Directory</b> at the bottom. That is the folder Lintel has to sit in — you’ll come back to it in step 5.</p>
+      <p>Unless you changed it, it reads <b>Userscripts App Documents</b>, which is <b>Files → On My iPhone → Userscripts</b>. If you pointed the app at iCloud instead, it will read something like <code>iCloud Drive/Userscripts</code> — use whichever one the app shows you.</p>
+      <img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its Current Directory." loading="lazy" />
+    </div>
+  </details>
 
-<h3>3. Turn the extension on</h3>
-<p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b>, <b>Extensions</b>, and tap <b>Userscripts</b>. Turn on <b>Allow Extension</b>, then allow it on <code>rbs.singaporetech.edu.sg</code>.</p>
-<img class="step" src="/images/install/iphone-3.jpg" alt="Userscripts listed in Safari's Extensions settings, marked." loading="lazy" />
+  <details class="step">
+    <summary>3. Turn the extension on</summary>
+    <div class="body">
+      <p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b>, <b>Extensions</b>, and tap <b>Userscripts</b>. Turn on <b>Allow Extension</b>, then allow it on <code>rbs.singaporetech.edu.sg</code>.</p>
+      <img class="step" src="/images/install/iphone-3.jpg" alt="Userscripts listed in Safari's Extensions settings, marked." loading="lazy" />
+    </div>
+  </details>
 
-<h3>4. Download the script</h3>
-<p>Open this page in <b>Safari</b>, then tap the button. Safari saves the file straight to its <b>Downloads</b> folder — there’s no “where do you want to save this” prompt to answer.</p>
-<a class="btn" href="/lintel.user.js" download="lintel.user.js">Download for iPhone</a>
-<p class="note">If your iPhone shows the script as a page of text instead of saving it, press and hold the button and choose <b>Download Linked File</b>. Either way the file ends up in Downloads.</p>
+  <details class="step">
+    <summary>4. Download the script</summary>
+    <div class="body">
+      <p>Open this page in <b>Safari</b>, then tap the button. Safari saves the file straight to its <b>Downloads</b> folder — there’s no “where do you want to save this” prompt to answer.</p>
+      <a class="btn" href="/lintel.user.js" download="lintel.user.js">Download for iPhone</a>
+      <p class="note">If your iPhone shows the script as a page of text instead of saving it, press and hold the button and choose <b>Download Linked File</b>. Either way the file ends up in Downloads.</p>
+    </div>
+  </details>
 
-<h3>5. Move it into the Userscripts folder</h3>
-<p>Tap the <b>downloads</b> button in Safari’s toolbar (a circle with a down arrow), then tap <b>Downloads</b>. You’ll see <code>lintel.user.js</code> there.</p>
-<p>Press and hold the file, choose <b>Move</b>, then navigate to the folder from step 2 — <b>On My iPhone → Userscripts</b>, or <b>iCloud Drive → Userscripts</b> — and tap <b>Move</b>.</p>
+  <details class="step">
+    <summary>5. Move it into the Userscripts folder</summary>
+    <div class="body">
+      <p>Tap the <b>downloads</b> button in Safari’s toolbar (a circle with a down arrow), then <b>Downloads</b>. You’ll see <code>lintel.user.js</code> there.</p>
+      <p>Press and hold the file, choose <b>Move</b>, then go to the folder from step 2 — <b>On My iPhone → Userscripts</b>, or <b>iCloud Drive → Userscripts</b> — and tap <b>Move</b>.</p>
+    </div>
+  </details>
 
-<h3>6. Let Userscripts pick it up</h3>
-<p>Open the Userscripts app (or tap <b>aA → Userscripts</b> in Safari once). Lintel now appears in its list, and from then on it loads on the booking site by itself.</p>
+  <details class="step">
+    <summary>6. Let Userscripts pick it up</summary>
+    <div class="body">
+      <p>Open the Userscripts app (or tap <b>aA → Userscripts</b> in Safari once). Lintel now appears in its list, and from then on it loads on the booking site by itself.</p>
+    </div>
+  </details>
 
-<h3>7. Open the booking site</h3>
-<p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> in Safari and log in as usual. Lintel appears by itself.</p>
-<img class="step phone" src="/images/install/iphone-6.jpg" alt="The Lintel dashboard on iPhone." loading="lazy" />
+  <details class="step">
+    <summary>7. Open the booking site</summary>
+    <div class="body">
+      <p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> in Safari and log in as usual. Lintel appears by itself.</p>
+      <img class="step phone" src="/images/install/iphone-6.jpg" alt="The Lintel dashboard on iPhone." loading="lazy" />
+    </div>
+  </details>
 
-<h3>Keeping it up to date</h3>
-<p>You never have to repeat this. The file carries its own update address, and Userscripts checks it on its own; new versions show under <b>Available Updates</b> in the <b>aA → Userscripts</b> panel. Tap <b>aA</b> there whenever you want to check by hand.</p>
-<p class="note">Prefer not to touch the Files app? Tap <b>aA → Userscripts</b> while the script page is open and install from the panel instead. Both routes end up in the same folder.</p>
+  <p class="note" style="margin:14px 0 6px">You never repeat this. The file carries its own update address, so Userscripts checks it and lists new versions under <b>Available Updates</b> in the <b>aA → Userscripts</b> panel. Prefer not to touch the Files app? Install straight from that panel instead — both routes end in the same folder.</p>
+</details>
 
-<h3>Using it</h3>
-<p>Search for a room, then tap free slots on the board. Swipe sideways to see later times.</p>
-<img class="step phone" src="/images/install/iphone-7.jpg" alt="The Lintel board on iPhone, with rooms and booked slots." loading="lazy" />
-<p>Check your selection and tap <b>Book this slot</b>. Nothing is booked until you confirm.</p>
-<img class="step phone" src="/images/install/iphone-8.jpg" alt="The Selected slots panel on iPhone with a Book this slot button." loading="lazy" />
-</section>
+<details class="plat" id="android">
+  <summary>Android <span class="sub">Firefox + Tampermonkey · 4 steps</span></summary>
+  <div class="body">
+    <ol>
+      <li>Install Firefox.</li>
+      <li>In Firefox, add the Tampermonkey extension.</li>
+      <li>In Firefox, tap the button below and confirm the install.</li>
+      <li>Open the booking site in Firefox and log in.</li>
+    </ol>
+    <a class="btn" href="/lintel.user.js">Install on Android</a>
+  </div>
+</details>
 
-<section id="android">
-<h2>Android</h2>
-<ol>
-  <li>Install Firefox.</li>
-  <li>In Firefox, add the Tampermonkey extension.</li>
-  <li>In Firefox, tap the button below and confirm the install.</li>
-  <li>Open the booking site in Firefox and log in.</li>
-</ol>
-<a class="btn" href="/lintel.user.js">Install on Android</a>
-</section>
+<details class="plat" id="using">
+  <summary>Using Lintel <span class="sub">the board, booking, and what is safe</span></summary>
+  <div class="body">
+    <p>Search for a room, then tap free slots on the board. Swipe sideways to see later times.</p>
+    <img class="step phone" src="/images/install/iphone-7.jpg" alt="The Lintel board on iPhone, with rooms and booked slots." loading="lazy" />
+    <p>Check your selection and tap <b>Book this slot</b>. Nothing is booked until you confirm.</p>
+    <img class="step phone" src="/images/install/iphone-8.jpg" alt="The Selected slots panel on iPhone with a Book this slot button." loading="lazy" />
+    <p class="note">Everything runs in your own browser session. Nothing is sent anywhere, and Lintel never books without your confirmation.</p>
+  </div>
+</details>
 
-<p>Updates install automatically. To stop using Lintel, remove it from Chrome, Userscripts or Tampermonkey.</p>
+<p style="margin-top:24px">Updates install automatically. To stop using Lintel, remove it from Chrome, Userscripts or Tampermonkey.</p>
+
+<script>
+  // Open the platform that matches the device (or the one in the URL hash), so a
+  // phone visitor sees one relevant list instead of all three.
+  (function () {
+    var ua = navigator.userAgent;
+    var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    var id = location.hash ? location.hash.slice(1) : (ios ? 'iphone' : android ? 'android' : 'chrome');
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') {
+      el.open = true;
+      var first = el.querySelector('details.step');
+      if (first) first.open = true;
+    }
+  })();
+</script>
 </body>
 </html>
