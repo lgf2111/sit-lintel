@@ -55,7 +55,8 @@ so the phone is the primary layout rather than the broken fallback.
 * **Hamburger menu in the top-left** (the stock mobile answer). Rejected: four
   destinations do not justify a menu icon students must learn, and the top-left is the
   hardest corner to reach one-handed. Chosen instead: brand + one primary action in the
-  bar, and the four in-page links in a bottom sheet opened by a 44 px "Sections" control.
+  bar, and all six in-page links in a native `<dialog>` sheet opened by a 44 px "Sections"
+  control (`showModal()`, so Escape, the backdrop and focus containment come from the platform).
 
 ## Key decisions
 
@@ -72,7 +73,62 @@ so the phone is the primary layout rather than the broken fallback.
    Get section is on screen, with `env(safe-area-inset-bottom)` padding.
 6. **Type scale**: h1 34/40 px on phone (not 38+), h2 24/30, h3 19, body 17, secondary 15,
    minimum 13 for the board mock's labels but never below 11.
-7. **Contrast**: body `#5C5A56` on `#FBFAF7` (6.9:1), dark `#B4B1AB` on `#17161A`
-   (8.0:1); red `#DA1A21` keeps white text (5.9:1).
+7. **Contrast**, recomputed from the hex values: body `#5C5A56` on `#FBFAF7` (6.59:1),
+   dark `#B4B1AB` on `#17161A` (8.42:1), white on red `#DA1A21` (5.06:1). All pass AA for
+their sizes.
 8. **Motion** is one 200 ms sheet transition and nothing else; `prefers-reduced-motion`
    removes it.
+
+## Analysis
+
+Seven review lenses were run against this brief in parallel; the findings below are
+the ones that survived a check against the built page. Two were dropped.
+
+**Accepted and fixed in the build**
+
+* **The hero mock is an excerpt, and it was lying about it.** The board runs
+  07:00–22:30 across the whole campus; a phone column cannot hold 31 half-hours at a
+  13 px label. The mock shows five columns (08:00–10:30) and six rooms, which is right,
+  but the first version presented it as the whole board. It now says `8 Nov ·
+  08:00–10:30` in its own top bar and the accessible label states that the day
+  continues to 22:30. This is deliberate: a compressed 28-column ruler (each column
+  9 px) proves scale but cannot be read or tapped, and a horizontally scrolled board
+  puts the room names off-screen, which is the exact failure the redesign was fixing.
+* **The legend had been lost** in an edit, so the first screen showed striped and
+  ticked cells with nothing explaining them. Restored above the grid, with swatches
+  that carry the same two cues as the cells rather than plain colour.
+* **The page never named the site.** "The booking site" appeared 2,100 px down; the
+  hero now names `rbs.singaporetech.edu.sg` and calls Lintel an add-on for it, so a
+  visitor knows what they would be installing within the first screen.
+* **The safety sub-line narrated the section** ("You should know what you're
+  installing…") without adding a fact; removed.
+* **"Credits" was never explained**; reworded to "credit balance".
+* **Ratios in this brief were estimated, not computed**; corrected to 6.59:1, 8.42:1
+  and 5.06:1.
+
+**Accepted, left open**
+
+* **The shared header does not exist.** Every style is inline in `index.html`; there is
+  no stylesheet to inherit. Scope is therefore the homepage only, and `/install` and
+  `/privacy` keep their own headers. Extracting `site.css` is the next step if the two
+  pages are to match exactly — they already share the red and the near-black ground but
+  not the greys (`#1c1b1a`/`#dcd9d1` there versus `#1c1b1d`/`#e2ded5` here).
+* **`og:image` still points at `share.jpg`,** which shows the old desktop hero. Sharing
+  the link advertises a layout the page no longer has. It needs one 1200×630 capture of
+  the new hero.
+* **The other four screenshots are still 1280 px captures** at ~350 px
+  (`booking.jpg`, `equipment.jpg`, `dark.jpg` in the features, plus the two in the
+  comparison). They are framed inside bordered cards and read as illustrations rather
+  than evidence; the legibility goal is met only in the hero.
+* **No success metric exists.** This is a taste-driven change with measured CSS
+  outcomes but no behavioural baseline: no device split, no install rate, no drop-off
+  point. If the goal is installs rather than appearance, the next measurement belongs
+  on `/install`, not here.
+
+**Dropped as wrong or not applicable**
+
+* *"The live mock is geometrically impossible"* — true for a full 28-column day, and the
+  reason the mock is now labelled as an excerpt rather than expanded. The finding
+  assumed the mock was trying to show the whole day; it is not.
+* *"The sticky bottom bar costs 6.6% of the viewport"* — the bar was cut before this
+  review arrived: it covered content and duplicated the header action.
