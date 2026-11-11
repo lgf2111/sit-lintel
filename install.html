@@ -55,40 +55,41 @@
 
 <section id="iphone">
 <h2>iPhone</h2>
-<p>Lintel runs in Safari, with the help of a free app called Userscripts. Every step below happens in Safari, on your iPhone.</p>
+<p>Lintel runs in Safari, with the help of a free app called Userscripts. Every step below happens on your iPhone.</p>
 
 <h3>1. Get the Userscripts app</h3>
 <p>Install it from the App Store. It’ll say <b>Get</b> if you don’t have it yet.</p>
 <a class="btn alt" href="https://apps.apple.com/app/userscripts/id1463298887">Open the App Store</a>
 <img class="step" src="/images/install/iphone-1.jpg" alt="Userscripts in the App Store, with the main button marked." loading="lazy" />
 
-<h3>2. Open the app once</h3>
-<p>Open Userscripts and leave it as it is. It sets up its own folder in iCloud Drive, which is where the script will live. You can see the path it picked under <b>Current directory</b>.</p>
-<img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its icon, a note about the Safari extension, and its Current directory." loading="lazy" />
+<h3>2. Note where Userscripts keeps scripts</h3>
+<p>Open the app once and look at <b>Current Directory</b> at the bottom. That is the folder Lintel has to sit in — you’ll come back to it in step 5.</p>
+<p>Unless you changed it, it reads <b>Userscripts App Documents</b>, which is <b>Files → On My iPhone → Userscripts</b>. If you pointed the app at iCloud instead, it will read something like <code>iCloud Drive/Userscripts</code> — use whichever one the app shows you.</p>
+<img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its Current Directory." loading="lazy" />
 
 <h3>3. Turn the extension on</h3>
-<p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b>, <b>Extensions</b>, and tap <b>Userscripts</b>. Turn on <b>Allow Extension</b>, then allow it on <code>lintel.leeguanfeng.com</code> and <code>rbs.singaporetech.edu.sg</code>.</p>
+<p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b>, <b>Extensions</b>, and tap <b>Userscripts</b>. Turn on <b>Allow Extension</b>, then allow it on <code>rbs.singaporetech.edu.sg</code>.</p>
 <img class="step" src="/images/install/iphone-3.jpg" alt="Userscripts listed in Safari's Extensions settings, marked." loading="lazy" />
 
-<h3>4. Open this page in Safari</h3>
-<p>Open <a href="/install">lintel.leeguanfeng.com/install</a> in <b>Safari</b> — not Chrome — and stay on that tab for the next two steps.</p>
+<h3>4. Download the script</h3>
+<p>Open this page in <b>Safari</b>, then tap the button. Safari saves the file straight to its <b>Downloads</b> folder — there’s no “where do you want to save this” prompt to answer.</p>
+<a class="btn" href="/lintel.user.js" download="lintel.user.js">Download for iPhone</a>
+<p class="note">If your iPhone shows the script as a page of text instead of saving it, press and hold the button and choose <b>Download Linked File</b>. Either way the file ends up in Downloads.</p>
 
-<h3>5. Tap Install, then aA</h3>
-<p>Tap the button below. Safari will show the script as text: that is normal, not a failed download. The install controls live in Safari’s toolbar, not on the page.</p>
-<a class="btn" href="/lintel.user.js">Install on iPhone</a>
-<p>Now tap <b>aA</b> in the address bar and choose <b>Userscripts</b>. The panel lists <b>Lintel</b> with a <b>JS</b> tag — tap the blue button beside it to install.</p>
-<img class="step" src="/images/install/iphone-5.jpg" alt="The Userscripts panel open over the script, with Lintel listed and marked." loading="lazy" />
+<h3>5. Move it into the Userscripts folder</h3>
+<p>Tap the <b>downloads</b> button in Safari’s toolbar (a circle with a down arrow), then tap <b>Downloads</b>. You’ll see <code>lintel.user.js</code> there.</p>
+<p>Press and hold the file, choose <b>Move</b>, then navigate to the folder from step 2 — <b>On My iPhone → Userscripts</b>, or <b>iCloud Drive → Userscripts</b> — and tap <b>Move</b>.</p>
 
-<h3>6. If the panel shows nothing</h3>
-<p>That means the extension is not allowed on this page yet — go back to step 3 and allow it on <code>lintel.leeguanfeng.com</code>, then reload and tap <b>aA</b> again.</p>
-<p class="note">Prefer the Files app? Long-press the page and choose <b>Download Linked File</b>, then move <code>lintel.user.js</code> from <b>Downloads</b> into <b>iCloud Drive → Userscripts</b>. Same result — the file carries its own update address — but you must open the Userscripts panel once afterwards so it picks the file up.</p>
+<h3>6. Let Userscripts pick it up</h3>
+<p>Open the Userscripts app (or tap <b>aA → Userscripts</b> in Safari once). Lintel now appears in its list, and from then on it loads on the booking site by itself.</p>
 
 <h3>7. Open the booking site</h3>
 <p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> in Safari and log in as usual. Lintel appears by itself.</p>
 <img class="step phone" src="/images/install/iphone-6.jpg" alt="The Lintel dashboard on iPhone." loading="lazy" />
 
 <h3>Keeping it up to date</h3>
-<p>You do not have to reinstall. The script names its own update address, and Userscripts checks it on its own; new versions show up under <b>Available Updates</b> in the same <b>aA → Userscripts</b> panel. Tap <b>aA</b> there whenever you want to check by hand.</p>
+<p>You never have to repeat this. The file carries its own update address, and Userscripts checks it on its own; new versions show under <b>Available Updates</b> in the <b>aA → Userscripts</b> panel. Tap <b>aA</b> there whenever you want to check by hand.</p>
+<p class="note">Prefer not to touch the Files app? Tap <b>aA → Userscripts</b> while the script page is open and install from the panel instead. Both routes end up in the same folder.</p>
 
 <h3>Using it</h3>
 <p>Search for a room, then tap free slots on the board. Swipe sideways to see later times.</p>
