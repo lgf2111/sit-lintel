@@ -55,7 +55,7 @@
 
 <section id="iphone">
 <h2>iPhone</h2>
-<p>Lintel runs in Safari with the help of a free app called Userscripts.</p>
+<p>Lintel runs in Safari, with the help of a free app called Userscripts. Chrome on iPhone cannot run Safari extensions, so it can only ever show you the script's text — use Safari for every step below.</p>
 
 <h3>1. Get the Userscripts app</h3>
 <p>Install it from the App Store. It’ll say <b>Get</b> if you don’t have it yet.</p>
@@ -63,29 +63,32 @@
 <img class="step" src="/images/install/iphone-1.jpg" alt="Userscripts in the App Store, with the main button marked." loading="lazy" />
 
 <h3>2. Open the app once</h3>
-<p>Open Userscripts, then close it. You don’t need to change anything.</p>
-<img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its icon and a note about turning on the Safari extension." loading="lazy" />
+<p>Open Userscripts and leave it as it is. It sets up its own folder in iCloud Drive, which is where the script will live. You can see the path it picked under <b>Current directory</b>.</p>
+<img class="step" src="/images/install/iphone-2.jpg" alt="The Userscripts app showing its icon, a note about the Safari extension, and its Current directory." loading="lazy" />
 
-<h3>3. Find it in Settings</h3>
-<p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b> and <b>Extensions</b>. Tap <b>Userscripts</b>.</p>
+<h3>3. Turn the extension on</h3>
+<p>Open <b>Settings</b>, then <b>Apps</b>, <b>Safari</b>, <b>Extensions</b>, and tap <b>Userscripts</b>. Turn on <b>Allow Extension</b>, then allow it on <code>lintel.leeguanfeng.com</code> and <code>rbs.singaporetech.edu.sg</code>.</p>
 <img class="step" src="/images/install/iphone-3.jpg" alt="Userscripts listed in Safari's Extensions settings, marked." loading="lazy" />
 
-<h3>4. Turn it on</h3>
-<p>Turn on <b>Allow Extension</b>. Under website access, allow <code>rbs.singaporetech.edu.sg</code> and <code>lintel.leeguanfeng.com</code>.</p>
+<h3>4. Open this page in Safari</h3>
+<p>Open <a href="/install">lintel.leeguanfeng.com/install</a> in <b>Safari</b> — not Chrome — and stay on that tab for the next two steps.</p>
 
-<h3>5. Tell Safari to open it with Userscripts</h3>
-<p>You only do this once. Safari treats a <code>.user.js</code> file as a web page, so it shows the script as text until you say otherwise — that is Safari’s behaviour, not a broken download.</p>
-<p>Tap <b>aA</b> (or the puzzle-piece icon) in the address bar, choose <b>Manage Extensions</b>, and make sure <b>Userscripts</b> is allowed on <code>lintel.leeguanfeng.com</code>. On iPad or Mac you can instead pick <b>Always Allow on This Website</b>.</p>
-<img class="step" src="/images/install/iphone-5.jpg" alt="The Userscripts panel with Lintel listed and marked." loading="lazy" />
-
-<h3>6. Install Lintel</h3>
-<p>Tap the button, then tap the <b>Userscripts</b> icon in the address bar and confirm the install.</p>
+<h3>5. Tap Install, then aA</h3>
+<p>Tap the button below. Safari will show the script as text: that is normal, not a failed download. The install controls live in Safari’s toolbar, not on the page.</p>
 <a class="btn" href="/lintel.user.js">Install on iPhone</a>
-<p class="note">Seeing code instead of an install prompt? The extension is not allowed on this site yet — go back to step 5. The button deliberately opens the script so Userscripts can read it; there is no file to download.</p>
+<p>Now tap <b>aA</b> in the address bar and choose <b>Userscripts</b>. The panel lists <b>Lintel</b> with a <b>JS</b> tag — tap the blue button beside it to install.</p>
+<img class="step" src="/images/install/iphone-5.jpg" alt="The Userscripts panel open over the script, with Lintel listed and marked." loading="lazy" />
+
+<h3>6. If the panel shows nothing</h3>
+<p>That means the extension is not allowed on this page yet — go back to step 3 and allow it on <code>lintel.leeguanfeng.com</code>, then reload and tap <b>aA</b> again.</p>
+<p class="note">Prefer the Files app? Long-press the page and choose <b>Download Linked File</b>, then move <code>lintel.user.js</code> from <b>Downloads</b> into <b>iCloud Drive → Userscripts</b>. Same result — the file carries its own update address — but you must open the Userscripts panel once afterwards so it picks the file up.</p>
 
 <h3>7. Open the booking site</h3>
 <p>Go to <a href="https://rbs.singaporetech.edu.sg">rbs.singaporetech.edu.sg</a> in Safari and log in as usual. Lintel appears by itself.</p>
 <img class="step phone" src="/images/install/iphone-6.jpg" alt="The Lintel dashboard on iPhone." loading="lazy" />
+
+<h3>Keeping it up to date</h3>
+<p>You do not have to reinstall. The script names its own update address, and Userscripts checks it on its own; new versions show up under <b>Available Updates</b> in the same <b>aA → Userscripts</b> panel. Tap <b>aA</b> there whenever you want to check by hand.</p>
 
 <h3>Using it</h3>
 <p>Search for a room, then tap free slots on the board. Swipe sideways to see later times.</p>
