@@ -89,9 +89,8 @@ the ones that survived a check against the built page. Two were dropped.
 * **The hero mock is an excerpt, and it was lying about it.** The board runs
   07:00–22:30 across the whole campus; a phone column cannot hold 31 half-hours at a
   13 px label. The mock shows five columns (08:00–10:30) and six rooms, which is right,
-  but the first version presented it as the whole board. It now says `8 Nov ·
-  08:00–10:30` in its own top bar and the accessible label states that the day
-  continues to 22:30. This is deliberate: a compressed 28-column ruler (each column
+  but the first version presented it as the whole board. It now says `Preview · All rooms · 8 Nov · 08:00–10:30` in its own top bar and
+  the accessible label states that the day continues to 22:30. This is deliberate: a compressed 28-column ruler (each column
   9 px) proves scale but cannot be read or tapped, and a horizontally scrolled board
   puts the room names off-screen, which is the exact failure the redesign was fixing.
 * **The legend had been lost** in an edit, so the first screen showed striped and
